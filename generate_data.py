@@ -1,13 +1,12 @@
 import numpy as np
 import matplotlib.pyplot as plt
 import json
-from hash_table import *
 
 DATA_SIZE = 10
 SAMPLE_SIZE = 10
 
 def generate_int(data_size):
-    randomNums = np.random.normal(scale=3, size=data_size)
+    randomNums = np.random.normal(scale=100, size=data_size)
     randomInts = np.round(randomNums)
 
     return randomInts
@@ -33,18 +32,3 @@ def decode_json_file(filename):
         return json_data
 
     return None
-
-
-if __name__ == '__main__':
-    #create_json_file('integer_data.json')
-    json_data = np.array(decode_json_file('integer_data.json'))
-    print(json_data)
-
-    HT = HashTable(length=10)
-
-    for j in range(len(json_data[0])):
-        HT.add(json_data[0][j],-1)
-
-    print(HT)
-    HT.rehash()
-    print(HT)
